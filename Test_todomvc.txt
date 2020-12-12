@@ -1,0 +1,41 @@
+#Project  test functionality Todomvc
+Url https://todomvc4tasj.herokuapp.com 
+##Draft planing
+    *Operations
+    	*add					                    !!!
+    	*edit text:
+    	   *start by double-click		            !!
+    	   *finish
+                *by Enter					        !!
+                *by losing focus
+                    *by outside click				!
+                    *by Tab				.
+                *cancel Esc				            !!
+           *edit state
+                *completed
+                    *one				            !!
+                    *all				            !
+                *uncomplete				            !!
+                    *one				            !!
+                    *all				            .
+           *delete
+        *one
+            *by pressing cross			            !!!
+            *by editing to			                !
+        *clear completed				            !!
+    *display items left			                    !
+         *filter
+            *show all			                    !
+            *show active			                !
+            *show completed		                    !
+
+##Test scenario Todomcs
+
+*add 'a', 'b', 'c'
+ assert list : 'a', 'b', 'c'
+*edit 'b' to 'b*'
+*complete  'b*'
+*clear completed
+ assert list: 'a', 'c'
+delete 'c'
+*assert list : 'a'
