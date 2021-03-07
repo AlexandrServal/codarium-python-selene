@@ -20,6 +20,7 @@ browser.all('#todo-list>li').should(have.exact_texts('b', 'c'))
 browser.all('#todo-list>li').element_by(have.exact_text('c')).double_click()
 browser.element('.editing>.edit').type(' to be canceled').press_escape()
 
+#clear
 browser.all('#todo-list>li').element_by(have.exact_text('c')).element('.toggle').click()
 browser.element('#clear-completed').click()
 browser.all('#todo-list>li').should(have.exact_text('b'))
