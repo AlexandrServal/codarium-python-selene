@@ -2,6 +2,8 @@ from selene import have
 from selene.support.shared import browser
 
 browser.open("http://todomvc4tasj.herokuapp.com/")
+ browser.should(have.js_returned(True, "return $._data($('#clear-completed')[0], 'events').hasOwnProperty('click')"
+  "&& Object.keys(required.contexts._.defined).length === 39"))
 
 # Add
 browser.element('#new-todo').type('a').press_enter()

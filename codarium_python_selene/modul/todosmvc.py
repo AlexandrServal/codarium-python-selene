@@ -2,18 +2,18 @@ from selene import have, command
 from selene.support.shared import browser
 
 
-todo_list = browser.all('#todo-list')
+todo_list = browser.all('#todo-list>li')
 
 
-def open():
+def visit():
     browser.config.hold_browser_open = True
     browser.open("http://todomvc4tasj.herokuapp.com/")
     browser.should(have.js_returned(True, "return $._data($('#clear-completed')[0], 'events').hasOwnProperty('click')"))
 
 
-def add(*to dos: str):
+def add(*todos: str):
     for todo in todos:
-         browser.element('#new-todo').type(todo).press_enter()
+        browser.element('#new-todo').type(todo).press_enter()
 
 
 def should_have(*todos: str):
@@ -26,8 +26,8 @@ def start_editing(todo: str, new_text):
         .element('.edit').perform(command.js.set_value(new_text))
 
 
-def edit(todo: str,new_text):
-    start_editing(todo, new_text).press_escape()
+def edit(todo: str, new_text):
+    start_editing(todo, new_text).press_enter()
 
 
 def cancel_editing(todo: str, new_text):
@@ -43,9 +43,5 @@ def clear_completed():
 
 
 def delete(todo: str):
-    todo_list.element_by(have.exact_text(todo)).hover()\
-        .element('.destory').click()
-
-
-
+    todo_list.element_by(have.exact_text(todo)).hover().element('.destroy').click()
 
